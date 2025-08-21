@@ -1,5 +1,7 @@
 <!-- get data dari form -->
 <?php
+include 'config.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama = $_POST['nama'];
     $kelas = $_POST['kelas'];
@@ -11,5 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Tutup koneksi
     mysqli_close($koneksi);
+
+    // Redirect ke halaman index.php
+    header("Location: index.php");
+    exit();
 }
 ?>

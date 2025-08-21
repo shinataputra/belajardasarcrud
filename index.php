@@ -14,7 +14,7 @@
     include 'config.php';
     ?>
     <!-- form inputan -->
-    <form method="post">
+    <form action="prosesinput.php" method="post">
         <label>Nama</label>
         <input type="text" name="nama">
         <label>Kelas</label>
@@ -23,10 +23,7 @@
         <input type="text" name="alamat">
         <input type="submit" value="Kirim">
     </form>
-    <?php
-    // proses input data
-    include 'prosesinput.php';
-    ?>
+
 </body>
 
 </html>
