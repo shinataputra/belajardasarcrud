@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XI RPL 2</title>
+    <!-- style tailwindcss -->
+    
+
 
 </head>
 
@@ -30,29 +33,36 @@
     // query untuk mendapatkan data dari database
     $sql = "SELECT * FROM tbsiswa";
     $result = mysqli_query($koneksi, $sql);
+    ?>
 
-    if (mysqli_num_rows($result) > 0) {
-        echo "<table border='1'>
-                <tr>                    
+    <?php
+    if (mysqli_num_rows($result) > 0): ?>
+
+        <table>
+            <thead>
+                <tr>
                     <th>Nama</th>
                     <th>Kelas</th>
                     <th>Alamat</th>
-                </tr>";
-        // output data dari setiap baris
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr>                    
-                    <td>" . $row['nama'] . "</td>
-                    <td>" . $row['kelas'] . "</td>
-                    <td>" . $row['alamat'] . "</td>
-                </tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "Data tidak ditemukan";
-    }
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($row['nama']); ?></td>
+                        <td><?= htmlspecialchars($row['kelas']); ?></td>
+                        <td><?= htmlspecialchars($row['alamat']); ?></td>
+                    </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
 
+    <?php else: ?>
 
-    ?>
+        <p>Data tidak ditemukan</p>
+
+    <?php endif; ?>
+
 
 </body>
 
