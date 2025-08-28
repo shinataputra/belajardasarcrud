@@ -24,6 +24,36 @@
         <input type="submit" value="Kirim">
     </form>
 
+    <!-- tampilkan data dari database -->
+
+    <?php
+    // query untuk mendapatkan data dari database
+    $sql = "SELECT * FROM tbsiswa";
+    $result = mysqli_query($koneksi, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        echo "<table border='1'>
+                <tr>                    
+                    <th>Nama</th>
+                    <th>Kelas</th>
+                    <th>Alamat</th>
+                </tr>";
+        // output data dari setiap baris
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>                    
+                    <td>" . $row['nama'] . "</td>
+                    <td>" . $row['kelas'] . "</td>
+                    <td>" . $row['alamat'] . "</td>
+                </tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "Data tidak ditemukan";
+    }
+
+
+    ?>
+
 </body>
 
 </html>
